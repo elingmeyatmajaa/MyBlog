@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/insert_comments', function () {
+    $comment = Comment::create(['the_comment' => 'This is a second trial comment', 'post_id' => 1, 'user_id' => 1]);
+    $post = Post::find(1);
+    return $post->comments;
+});
+
+Route::get('/comments', function () {
+    $comments = Comment::all();
+    dd($comments);
+});
+
 
 Route::get('/', function () {
     return view('home');
