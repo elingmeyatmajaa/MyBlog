@@ -19,11 +19,6 @@ use App\Models\User;
 
 
 
-Route::get('/user', function () {
-    $user = User::find(1);
-    return $user->comments;
-});
-
 
 Route::get('/', function () {
     return view('home');
