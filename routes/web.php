@@ -5,7 +5,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
-
+use App\Models\Image;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,20 +18,10 @@ use App\Models\User;
 */
 
 
-Route::get('/createpost', function () {
+Route::get('/createuserimage', function () {
 
-    $post = Post::create([
-        'title' => 'This is Post',
-        'slug' => 'This-is-slug',
-        'excerpt' => 'This is excerpt',
-        'body' => 'This is body',
-        'user_id' => 1,
-        'category_id' => Category::find(1)->id
-    ]);
-
-
-
-    $post->image()->create(['name' => 'random file', 'extension' => 'jpg', 'path' => '/image/random_file.jpg']);
+    $image = Image::find(2);
+    return $image->imageable;
 });
 
 
