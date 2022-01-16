@@ -18,10 +18,17 @@ class DatabaseSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         \App\Models\Role::truncate();
         \App\Models\User::truncate();
+
+        \App\Models\Category::truncate();
+        \App\Models\Post::truncate();
+
         Schema::enableForeignKeyConstraints();
 
         // Create roles and users
         \App\Models\Role::factory(1)->create();
         \App\Models\User::factory(10)->create();
+
+        \App\Models\Category::factory(10)->create();
+        \App\Models\Post::factory(100)->create();
     }
 }
