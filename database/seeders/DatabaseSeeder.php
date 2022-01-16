@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Category::truncate();
         \App\Models\Post::truncate();
+        \App\Models\Comment::truncate();
+
 
         Schema::enableForeignKeyConstraints();
 
@@ -30,5 +32,6 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Category::factory(10)->create();
         \App\Models\Post::factory(100)->create();
+        \App\Models\Comment::factory(100)->create();
     }
 }
