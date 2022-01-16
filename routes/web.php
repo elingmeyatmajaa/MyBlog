@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
@@ -18,17 +19,10 @@ use App\Models\Image;
 */
 
 
-Route::get('/createuserimage', function () {
 
-    $image = Image::find(2);
-    return $image->imageable;
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
-
-Route::get('/', function () {
-    return view('home');
-})->name('home');
 
 
 Route::get('/post', function () {
