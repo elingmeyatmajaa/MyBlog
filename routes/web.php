@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostsController;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
@@ -25,9 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
-Route::get('/post', function () {
-    return view('post');
-})->name('post');
+Route::get('/posts/{post:slug}', [PostsController::class, 'show'])->name('posts.show');
 
 
 Route::get('/about', function () {
