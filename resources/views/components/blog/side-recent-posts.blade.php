@@ -1,7 +1,8 @@
-@props(['recent_posts'])
+@props(['recentPosts'])
+
 <div class="side">
     <h3 class="sidebar-heading">Recent Blog</h3>
-    @foreach($recent_posts as $recent_post)
+    @foreach($recentPosts as $recent_post)
     <div class="f-blog">
         <a href="{{ route('posts.show', $recent_post) }}" class="blog-img" style="background-image: url({{asset('storage/' .$recent_post->image->path. '') }});">
         </a>
