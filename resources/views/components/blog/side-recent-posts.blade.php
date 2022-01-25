@@ -12,5 +12,6 @@
             <p>{{ $recent_post->excerpt }}</p>
         </div>
     </div>
+
     @endforeach
 </div>
