@@ -36,8 +36,7 @@
             <div class="col-md-4 animate-box">
                 <div class="sidebar">
 
-                    <x-blog.side-categories />
-
+                    <x-blog.side-categories :categories="$categories" />
                     <div class="side">
                         <h3 class="sidebar-heading">Recent Blog</h3>
                         @foreach($recent_posts as $recent_post)
@@ -50,9 +49,13 @@
                                 <p>{{ $recent_post->excerpt }}</p>
                             </div>
                         </div>
-
                         @endforeach
                     </div>
+
+
+
+
+
                     <div class="side">
                         <h3 class="sidbar-heading">Tags</h3>
                         <div class="block-26">
