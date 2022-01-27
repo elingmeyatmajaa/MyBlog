@@ -29,4 +29,18 @@ class PostsController extends Controller
             'tags' => $tags
         ]);
     }
+
+    public function addComment(Post $post, Request $request)
+    {
+        $attributes = request()->validate([
+            'the_comment' => 'required|min:10|max:300'
+        ]);
+        $attributes['user_id'] = auth()->id();
+        $comment = $post->comments()->create($attributes);
+
+        return redirect('/posts/' . $post->slug . '#comment_' . $comment->id)->with(
+            'success',
+            'Comment has been added.'
+        );
+    }
 }
