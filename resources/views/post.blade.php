@@ -30,6 +30,7 @@
                     </div>
                 </div>
                 <div class="row row-pb-lg animate-box">
+
                     <div class="col-md-12">
                         <h2 class="colorlib-heading-2">{{ count($post->comments) }} Comments</h2>
 
@@ -51,57 +52,55 @@
                     </div>
                 </div>
 
+
+
+
+                <div class="row animate-box">
+                    <div class="col-md-12">
+
+                        <h2 class="colorlib-heading-2">Say something</h2>
+
+                        @auth
+
+                        <form method="POST" action="{{ route('posts.add_comment', $post) }}">
+                            @csrf
+
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <!-- <label for="message">Message</label> -->
+                                    <textarea name="the_comment" id="the_comment" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Post Comment" class="btn btn-primary">
+                            </div>
+                        </form>
+
+                        @endauth
+
+                        @guest
+                        <p class="lead"><a href="{{ route('login') }}">Login </a>
+                            OR <a href="{{ route('register') }}">Register</a> to
+                            write comments</p>
+                        @endguest
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDEBAR: start -->
+
+            <div class="col-md-4 animate-box">
+                <div class="sidebar">
+
+                    <x-blog.side-categories :categories="$categories" />
+
+                    <x-blog.side-recent-posts :recentPosts="$recent_posts" />
+
+                    <x-blog.side-tags :tags="$tags" />
+
+                </div>
             </div>
         </div>
-
-        <div class="row animate-box">
-            <div class="col-md-12">
-                <h2 class="colorlib-heading-2">Say something</h2>
-
-
-                @auth
-
-                <form method="POST" action="{{ route('posts.add_comment', $post) }}">
-                    @csrf
-
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <!-- <label for="message">Message</label> -->
-                            <textarea name="the_comment" id="the_comment" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Post Comment" class="btn btn-primary">
-                    </div>
-                </form>
-
-                @endauth
-
-                @guest
-                <p class="lead"><a href="{{ route('login') }}">Login </a>
-                    OR <a href="{{ route('register') }}">Register</a> to
-                    write comments</p>
-                @endguest
-            </div>
-        </div>
-
     </div>
 </div>
-</div>
-
-<!-- SIDEBAR: start -->
-<div class="col-md-4 animate-box">
-    <div class="sidebar">
-        <x-blog.side-categories :categories="$categories" />
-
-        <x-blog.side-recent-posts :recentPosts="$recent_posts" />
-
-        <x-blog.side-tags :tags="$tags" />
-
-    </div>
-</div>
-</div>
-</div>
-</div>
-
 @endsection
