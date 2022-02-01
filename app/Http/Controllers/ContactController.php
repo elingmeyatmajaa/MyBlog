@@ -18,6 +18,11 @@ class ContactController extends Controller
 
     public function store()
     {
+
+        $data = array();
+        $data['name'] = "Eling";
+        return response()->json($data);
+
         $attributes = request()->validate([
             "first_name" => 'required',
             "last_name" => 'required',
