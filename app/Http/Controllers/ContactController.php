@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Test;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Mail;
@@ -18,15 +18,23 @@ class ContactController extends Controller
 
     public function store()
     {
-        Contact::create(request()->validate([
+        $attributes = request()->validate([
             "first_name" => 'required',
             "last_name" => 'required',
             "email" => 'required',
             "subject" => 'nullable|min:5|max:50',
             "message" => 'required|min:5|max:500',
-        ]));
+        ]);
 
-        Mail::to("eling.atma@gmail.com")->send(new Test("eling"));
+        Contact::create($attributes);
+
+        Mail::to("eling.atma@gmail.com")->send(new ContactMail(
+            $attributes['first_name'],
+            $attributes['last_name'],
+            $attributes['email'],
+            $attributes['subject'],
+            $attributes['message'],
+        ));
 
         return redirect()->route('contact.create')->with('success', 'Your Message has been sent');
     }
