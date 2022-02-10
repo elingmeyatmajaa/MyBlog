@@ -1,6 +1,6 @@
 @extends('main_layouts.master')
 
-@section('title', $category->name . ' Category | Home')
+@section('title', $tag->name . ' Tag | Home')
 
 @section('content')
 <div class="colorlib-blog">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 @empty
-                <p class="lead">There are no posts related to this category. </p>
+                <p class="lead">There are no posts related to this tag. </p>
 
                 @endforelse
 
