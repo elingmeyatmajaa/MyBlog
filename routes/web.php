@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminControllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -24,6 +25,8 @@ use App\Models\Image;
 */
 
 
+
+// Front User Routes
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -53,3 +56,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+
+// Admin Dashboard Routes
+
+Route::get('admin', [DashboardController::class, 'index'])->name('admin.index');
